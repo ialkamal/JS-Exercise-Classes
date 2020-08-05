@@ -9,16 +9,21 @@ if (typeof exports !== "undefined") {
   // IGNORE: Test/Env Detection Stuff //
   // Node/Non-browser test env
   var chai = require("chai");
-  var results = require("../index.js");
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
+  //var results = require("../index.js");
 }
 var expect = chai.expect;
 
 describe("Instance of Airplane", () => {
   it("[1] initializes with the given name", () => {
+    // @ts-ignore
     const a = new Airplane("Gulfstream 550");
     expect(a.name).to.eq(`Gulfstream 550`);
   });
   it("[2] behaves correctly", () => {
+    // @ts-ignore
     const myPlane = new Airplane("Jumbo");
     expect(myPlane.name).to.equal("Jumbo");
     expect(myPlane.isFlying).to.equal(false);
@@ -33,6 +38,7 @@ describe("Instance of Person", () => {
   let neo;
   const foods = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   beforeEach(() => {
+    // @ts-ignore
     neo = new Person("Neo", 20);
   });
   it("[1] initializes with the given name", () => {
@@ -75,6 +81,7 @@ describe("Instance of Person", () => {
 describe("Instance of Car", () => {
   let batmobile;
   beforeEach(() => {
+    // @ts-ignore
     batmobile = new Car("BatMobile", 20);
   });
   it("[1] initializes with the given model", () => {
@@ -159,6 +166,7 @@ const projectManagerAttr = {
 describe("Instance of Lambdasian", () => {
   let lambdasian;
   beforeEach(() => {
+    // @ts-ignore
     lambdasian = new Lambdasian(lambdasianAttr);
   });
   it("[1] initializes with the given name", () => {
@@ -182,6 +190,7 @@ describe("Instance of Lambdasian", () => {
 describe("Instance of Instructor", () => {
   let instructor;
   beforeEach(() => {
+    // @ts-ignore
     instructor = new Instructor(instructorAttr);
   });
   it("[1] initializes with the given name, age and location", () => {
@@ -223,6 +232,7 @@ describe("Instance of Instructor", () => {
 describe("Instances of Student", () => {
   let student;
   beforeEach(() => {
+    // @ts-ignore
     student = new Student(studentAttr);
   });
   it("[1] initializes with the given name, age and location", () => {
@@ -271,6 +281,7 @@ describe("Instances of Student", () => {
 describe("Instance of ProjectManager", () => {
   let pm;
   beforeEach(() => {
+    // @ts-ignore
     pm = new ProjectManager(projectManagerAttr);
   });
   it("[1] initializes with all the fields instructors have", () => {
