@@ -144,7 +144,14 @@ class Instructor extends Lambdasian {
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject) {
-    return `${student.name} receives a perfect score on ${subject}`;
+    const pointsArray = [];
+    for (let i = -student.grade + 1; i < 100 - student.grade + 1; i++)
+      pointsArray.push(i);
+
+    const index = Math.floor(pointsArray.length * Math.random());
+    student.grade += pointsArray[index];
+
+    return `${student.name} received a ${student.grade} on ${subject}`;
   }
 }
 
@@ -169,6 +176,7 @@ class Student extends Lambdasian {
     this.previousBackground = attrs.previousBackground;
     this.className = attrs.className;
     this.favSubjects = attrs.favSubjects;
+    this.grade = Math.floor(100 * Math.random()) + 1;
   }
   listSubjects() {
     return `$Loving ${this.favSubjects.join(", ")}!`;
@@ -178,6 +186,9 @@ class Student extends Lambdasian {
   }
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate() {
+    if (this.grade > 70) return `${this.name} can graduate from Lambda school`;
   }
 }
 
@@ -216,6 +227,36 @@ class ProjectManager extends Instructor {
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
+const ismail = new Student({
+  name: "Ismail",
+  age: 37,
+  location: "Jeddah",
+  previousBackground: "Masters Electrical Engineering",
+  className: "Web Development",
+  favSubjects: ["HTML", "CSS", "JS"],
+});
+
+const pace = new Instructor({
+  name: "Pace",
+  age: 35,
+  location: "Pheonix",
+  specialty: "Web Development",
+  favLanguage: "Javascript",
+  catchPhrase: "Give me some Emoji love!",
+});
+
+while (true) {
+  if (ismail.grade <= 70) {
+    console.log(
+      `${pace.name} will grade ${ismail.name}'s ${ismail.className} test.`
+    );
+    console.log(pace.grade(ismail, "Web Development"));
+  } else {
+    console.log(ismail.graduate());
+    break;
+  }
+}
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
